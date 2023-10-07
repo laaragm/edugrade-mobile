@@ -83,12 +83,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-color-light-tint: #f5f6f9;
 }
 
-@media (prefers-color-scheme: dark) {
-    /*
-   * Dark Colors
-   * -------------------------------------------
-   */
-
+@media (prefers-color-scheme: light) {
     body {
         --ion-color-primary: linear-gradient(153deg, #34c8e8 1.7%, #4e4af2 114.52%, #4e4af2 114.52%);
         --ion-color-primary-rgb: 52, 200, 232;
@@ -164,9 +159,9 @@ http://ionicframework.com/docs/theming/ */
 
     .ios body {
         --ion-background-color: linear-gradient(
-            144deg,
+            105deg,
             rgba(2, 0, 36, 1) 0%,
-            rgba(36, 44, 59, 1) 56%,
+            rgba(36, 44, 59, 1) 45%,
             rgba(64, 133, 235, 1) 100%
         );
         --ion-background-color-rgb: 2, 0, 36;
@@ -246,10 +241,26 @@ http://ionicframework.com/docs/theming/ */
 
         --ion-item-background: #1e1e1e;
 
-        --ion-toolbar-background: #1f1f1f;
-
-        --ion-tab-bar-background: #1f1f1f;
+        --ion-toolbar-background: linear-gradient(180deg, rgba(54, 62, 81, 0.4) -4.83%, rgba(24, 28, 36, 0.4) 116.91%);
 
         --ion-card-background: #1e1e1e;
     }
+}
+
+ion-tab-bar,
+ion-tab-button {
+    background: linear-gradient(180deg, rgba(54, 62, 81, 0.4) -4.83%, rgba(24, 28, 36, 0.4) 116.91%);
+    height: 3.75rem;
+    stroke-width: 2px;
+    stroke: #fff;
+}
+
+ion-tab-button {
+    --color-selected: #fff;
+    --color: #fff;
+}
+
+ion-toolbar {
+    --color: #ffffff;
+    --background: transparent;
 }
