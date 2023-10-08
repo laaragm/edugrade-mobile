@@ -264,3 +264,7 @@ ion-toolbar {
     --color: #ffffff;
     --background: transparent;
 }
+
+ion-icon {
+    font-size: 1.6rem;
+}
