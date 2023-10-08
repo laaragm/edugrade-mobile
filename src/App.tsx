@@ -1,5 +1,4 @@
-import { Route } from "react-router-dom";
-import { IonApp, IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from "@ionic/react";
+import { IonApp, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
 /* Core CSS required for Ionic components to work properly */
@@ -21,19 +20,9 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import Teachers from "./pages/Teachers";
-import Disciplines from "./pages/Disciplines";
-import Users from "./pages/Users";
-import Grades from "./pages/Grades";
-import Students from "./pages/Students";
-
-import TeacherIcon from "./assets/teacher-icon.svg";
-import BookIcon from "./assets/book-icon.svg";
-import UserIcon from "./assets/user-icon.svg";
-import GradeIcon from "./assets/grade-icon.svg";
-import StudentIcon from "./assets/student-icon.svg";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./services/queryClient";
+import { SwitchTabBar } from "./components/SwitchTabBar";
 
 setupIonicReact();
 
@@ -41,43 +30,7 @@ const App: React.FC = () => (
     <IonApp>
         <IonReactRouter>
             <QueryClientProvider client={queryClient}>
-                <IonTabs>
-                    <IonRouterOutlet>
-                        <Route exact path="/teachers">
-                            <Teachers />
-                        </Route>
-                        <Route exact path="/disciplines">
-                            <Disciplines />
-                        </Route>
-                        <Route path="/users">
-                            <Users />
-                        </Route>
-                        <Route path="/grades">
-                            <Grades />
-                        </Route>
-                        <Route path="/students">
-                            <Students />
-                        </Route>
-                    </IonRouterOutlet>
-
-                    <IonTabBar slot="bottom">
-                        <IonTabButton tab="teachers" href="/teachers">
-                            <IonIcon aria-hidden="true" icon={TeacherIcon} />
-                        </IonTabButton>
-                        <IonTabButton tab="disciplines" href="/disciplines">
-                            <IonIcon aria-hidden="true" icon={BookIcon} />
-                        </IonTabButton>
-                        <IonTabButton tab="users" href="/users">
-                            <IonIcon aria-hidden="true" icon={UserIcon} />
-                        </IonTabButton>
-                        <IonTabButton tab="grades" href="/grades">
-                            <IonIcon aria-hidden="true" icon={GradeIcon} />
-                        </IonTabButton>
-                        <IonTabButton tab="students" href="/students">
-                            <IonIcon aria-hidden="true" icon={StudentIcon} />
-                        </IonTabButton>
-                    </IonTabBar>
-                </IonTabs>
+                <SwitchTabBar />
             </QueryClientProvider>
         </IonReactRouter>
     </IonApp>

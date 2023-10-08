@@ -7,13 +7,13 @@ const Teachers: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Teachers</IonTitle>
+                    <IonTitle slot="center">Teachers</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Tab 1</IonTitle>
+                        <IonTitle size="large">Teachers</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <ExploreContainer name="Tab 1 page" />
