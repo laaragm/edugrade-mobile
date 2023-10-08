@@ -3,4 +3,5 @@ export enum QueryKeys {
     Grades = "grades",
     Teachers = "teachers",
     Subjects = "subjects",
+    Users = "users",
 }
