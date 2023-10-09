@@ -1,23 +1,22 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-
-import "./index.css";
+import { useStudents } from "@/hooks";
+import { ItemsListPage } from "@/components";
 
 const Students: React.FC = () => {
+    const { data } = useStudents();
+    const isLoading = false;
+
+    // TODO: Implement functionality
+    const handleClick = (id: number) => {
+        console.log("Clicked: ", id);
+    };
+
+    // TODO: Implement functionality
+    const handleAdd = () => {
+        console.log("Add new discipline");
+    };
+
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Students</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent fullscreen>
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonTitle size="large">Students</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
-            </IonContent>
-        </IonPage>
+        <ItemsListPage title="Estudantes" data={data} isLoading={isLoading} onClick={handleClick} onAdd={handleAdd} />
     );
 };
 

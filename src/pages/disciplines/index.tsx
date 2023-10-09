@@ -1,23 +1,22 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-
-import "./index.css";
+import { useSubjects } from "@/hooks";
+import { ItemsListPage } from "@/components";
 
 const Disciplines: React.FC = () => {
+    const { data } = useSubjects();
+    const isLoading = false;
+
+    // TODO: Implement functionality
+    const handleClick = (id: number) => {
+        console.log("Clicked: ", id);
+    };
+
+    // TODO: Implement functionality
+    const handleAdd = () => {
+        console.log("Add new discipline");
+    };
+
     return (
-        <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Disciplines</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent fullscreen>
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonTitle size="large">Disciplines</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
-            </IonContent>
-        </IonPage>
+        <ItemsListPage title="Disciplinas" data={data} isLoading={isLoading} onClick={handleClick} onAdd={handleAdd} />
     );
 };
 

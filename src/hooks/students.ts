@@ -33,7 +33,7 @@ export function useUpdateStudent() {
 export function useStudents() {
     const { data, isLoading, isFetching, error, refetch } = useQuery([QueryKeys.Students], () => GetAllStudents(), {
         staleTime: 1000 * 60, // 1 minute
-    }) as UseQueryResult<IServiceResponse<IStudents>, unknown>;
+    }) as UseQueryResult<IServiceResponse<IStudent[]>, unknown>;
 
     return { data, isLoading, isFetching, error, refetch };
 }

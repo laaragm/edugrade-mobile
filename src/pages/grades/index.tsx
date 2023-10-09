@@ -7,13 +7,13 @@ const Grades: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Grades</IonTitle>
+                    <IonTitle>Notas</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Grades</IonTitle>
+                        <IonTitle size="large">Notas</IonTitle>
                     </IonToolbar>
                 </IonHeader>
             </IonContent>
