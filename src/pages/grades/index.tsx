@@ -1,25 +1,24 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
-import "./Teachers.css";
 
-const Teachers: React.FC = () => {
+import "./index.css";
+
+const Grades: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle slot="center">Teachers</IonTitle>
+                    <IonTitle>Grades</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Teachers</IonTitle>
+                        <IonTitle size="large">Grades</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <ExploreContainer name="Tab 1 page" />
             </IonContent>
         </IonPage>
     );
 };
 
-export default Teachers;
+export default Grades;

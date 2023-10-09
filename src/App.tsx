@@ -21,8 +21,9 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./services/queryClient";
-import { SwitchTabBar } from "./components/SwitchTabBar";
+
+import { SwitchTabBar } from "./components";
+import { queryClient } from "./services";
 
 setupIonicReact();
 

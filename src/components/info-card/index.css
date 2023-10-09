@@ -1,0 +1,31 @@
+.info-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #8fc4e1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    min-height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.info-card-title {
+    font-weight: 700;
+    color: black !important;
+}
+
+.chevron-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chevron-icon {
+    color: black !important;
+    width: 1.5rem;
+    height: 1.5rem;
+}

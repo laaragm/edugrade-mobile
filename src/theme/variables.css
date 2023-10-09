@@ -241,7 +241,12 @@ http://ionicframework.com/docs/theming/ */
 
         --ion-item-background: #1e1e1e;
 
-        --ion-toolbar-background: linear-gradient(180deg, rgba(54, 62, 81, 0.4) -4.83%, rgba(24, 28, 36, 0.4) 116.91%);
+        --ion-toolbar-background: linear-gradient(
+            160deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(36, 44, 59, 1) 45%,
+            rgba(64, 133, 235, 1) 100%
+        );
 
         --ion-card-background: #1e1e1e;
     }
@@ -251,20 +256,4 @@ ion-tab-bar,
 ion-tab-button {
     background: linear-gradient(180deg, rgba(54, 62, 81, 0.4) -4.83%, rgba(24, 28, 36, 0.4) 116.91%);
     height: 3.75rem;
-    stroke-width: 2px;
-    stroke: #fff;
-}
-
-ion-tab-button {
-    --color-selected: #fff;
-    --color: #fff;
-}
-
-ion-toolbar {
-    --color: #ffffff;
-    --background: transparent;
-}
-
-ion-icon {
-    font-size: 1.6rem;
 }

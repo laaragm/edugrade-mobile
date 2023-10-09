@@ -3,17 +3,19 @@ import { Redirect, Route } from "react-router";
 import { IonReactRouter } from "@ionic/react-router";
 import { CreateAnimation, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 
-import Tab1 from "../pages/Teachers";
-import Tab2 from "../pages/Disciplines";
-import Tab3 from "../pages/Users";
-import Tab4 from "../pages/Students";
-import Tab5 from "../pages/Grades";
+import { PATHS } from "@/routes";
 
-import TeacherIcon from "../assets/teacher-icon.svg";
-import BookIcon from "../assets/book-icon.svg";
-import UserIcon from "../assets/user-icon.svg";
-import GradeIcon from "../assets/grade-icon.svg";
-import StudentIcon from "../assets/student-icon.svg";
+import Tab1 from "@/pages/teachers";
+import Tab2 from "@/pages/disciplines";
+import Tab3 from "@/pages/user";
+import Tab4 from "@/pages/students";
+import Tab5 from "@/pages/grades";
+
+import TeacherIcon from "@/assets/teacher-icon.svg";
+import BookIcon from "@/assets/book-icon.svg";
+import UserIcon from "@/assets/user-icon.svg";
+import GradeIcon from "@/assets/grade-icon.svg";
+import StudentIcon from "@/assets/student-icon.svg";
 
 type Tab = {
     label: string;
@@ -24,48 +26,48 @@ type Tab = {
     component: React.FC;
 };
 
-export const SwitchTabBar = () => {
+export function SwitchTabBar() {
     const [activeTab, setActiveTab] = useState("tab0");
-    const switchRefs = useRef([]);
+    const switchRefs = useRef<any[]>([]);
     const color = "#ffffff";
     const backgroundColor = "#4189ED";
 
     const tabs: Tab[] = [
         {
-            label: "Teachers",
-            url: "/teachers",
+            label: PATHS.teachers.name,
+            url: PATHS.teachers.route,
             icon: TeacherIcon,
             color: color,
             backgroundColor: backgroundColor,
             component: Tab1,
         },
         {
-            label: "Disciplines",
-            url: "/disciplines",
+            label: PATHS.disciplines.route,
+            url: PATHS.disciplines.route,
             icon: BookIcon,
             color: color,
             backgroundColor: backgroundColor,
             component: Tab2,
         },
         {
-            label: "Users",
-            url: "/users",
+            label: PATHS.user.route,
+            url: PATHS.user.route,
             icon: UserIcon,
             color: color,
             backgroundColor: backgroundColor,
             component: Tab3,
         },
         {
-            label: "Students",
-            url: "/students",
+            label: PATHS.students.route,
+            url: PATHS.students.route,
             icon: StudentIcon,
             color: color,
             backgroundColor: backgroundColor,
             component: Tab4,
         },
         {
-            label: "Grades",
-            url: "/grades",
+            label: PATHS.grades.route,
+            url: PATHS.grades.route,
             icon: GradeIcon,
             color: color,
             backgroundColor: backgroundColor,
@@ -100,7 +102,6 @@ export const SwitchTabBar = () => {
     useEffect(() => {
         // @ts-ignore
         const tabIndex = +activeTab?.match(/\d+/)[0];
-        // @ts-ignore
         switchRefs.current[tabIndex].animation.play();
     }, [activeTab]);
 
@@ -136,7 +137,6 @@ export const SwitchTabBar = () => {
                                 {isActive && (
                                     // @ts-ignore
                                     <CreateAnimation
-                                        // @ts-ignore
                                         ref={(ref) => (switchRefs.current[index] = ref)}
                                         {...switchAnimation}>
                                         <IonLabel>{tab.label}</IonLabel>
@@ -149,4 +149,4 @@ export const SwitchTabBar = () => {
             </IonTabs>
         </IonReactRouter>
     );
-};
+}
