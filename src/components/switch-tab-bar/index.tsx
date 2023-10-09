@@ -42,7 +42,7 @@ export function SwitchTabBar() {
             component: Tab1,
         },
         {
-            label: PATHS.disciplines.route,
+            label: PATHS.disciplines.name,
             url: PATHS.disciplines.route,
             icon: BookIcon,
             color: color,
@@ -50,7 +50,7 @@ export function SwitchTabBar() {
             component: Tab2,
         },
         {
-            label: PATHS.user.route,
+            label: PATHS.user.name,
             url: PATHS.user.route,
             icon: UserIcon,
             color: color,
@@ -58,7 +58,7 @@ export function SwitchTabBar() {
             component: Tab3,
         },
         {
-            label: PATHS.students.route,
+            label: PATHS.students.name,
             url: PATHS.students.route,
             icon: StudentIcon,
             color: color,
@@ -66,7 +66,7 @@ export function SwitchTabBar() {
             component: Tab4,
         },
         {
-            label: PATHS.grades.route,
+            label: PATHS.grades.name,
             url: PATHS.grades.route,
             icon: GradeIcon,
             color: color,
