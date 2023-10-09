@@ -1,5 +1,4 @@
-import { IServiceResponse } from "../models/serviceResponse";
-import { IUser } from "../models/user";
+import { IServiceResponse, IUser } from "@/models";
 
 // TODO: Remove mocked data
 export async function GetUser(id: number): Promise<IServiceResponse<IUser>> {

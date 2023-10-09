@@ -1,5 +1,4 @@
-import { IGrade } from "../models/grade";
-import { IServiceResponse } from "../models/serviceResponse";
+import { IGrade, IServiceResponse } from "@/models";
 import { Create, Delete, Get, Update } from "./base";
 
 export async function CreateGrade(grade: IGrade): Promise<IServiceResponse<string>> {

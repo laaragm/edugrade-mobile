@@ -1,9 +1,7 @@
 import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
-import { queryClient } from "../services/queryClient";
-import { CreateGrade, DeleteGrade, GetAllGrades, UpdateGrade } from "../services/gradeService";
-import { IGrade, IGrades } from "../models/grade";
-import { QueryKeys } from "../models/queryKeys";
-import { IServiceResponse } from "../models/serviceResponse";
+
+import { queryClient, CreateGrade, DeleteGrade, GetAllGrades, UpdateGrade } from "@/services";
+import { IGrade, IGrades, IServiceResponse, QueryKeys } from "@/models";
 
 export function useCreateGrade() {
     const mutation = useMutation({

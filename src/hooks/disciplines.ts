@@ -1,9 +1,7 @@
 import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
-import { ISubject, ISubjects } from "../models/subject";
-import { CreateSubject, UpdateSubject, DeleteSubject, GetAllSubjects } from "../services/disciplineService";
-import { queryClient } from "../services/queryClient";
-import { QueryKeys } from "../models/queryKeys";
-import { IServiceResponse } from "../models/serviceResponse";
+
+import { queryClient, CreateSubject, UpdateSubject, DeleteSubject, GetAllSubjects } from "@/services";
+import { ISubject, ISubjects, IServiceResponse, QueryKeys } from "@/models";
 
 export function useCreateSubject() {
     const mutation = useMutation({

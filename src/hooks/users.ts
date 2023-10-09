@@ -1,8 +1,7 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { IUser } from "../models/user";
-import { IServiceResponse } from "../models/serviceResponse";
-import { QueryKeys } from "../models/queryKeys";
-import { GetUser } from "../services/userService";
+
+import { GetUser } from "@/services";
+import { IUser, IServiceResponse, QueryKeys } from "@/models";
 
 export function useUser(id: number) {
     const { data, isLoading, isFetching, error } = useQuery([QueryKeys.Users, id], () => GetUser(id), {

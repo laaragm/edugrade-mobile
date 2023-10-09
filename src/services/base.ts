@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from "axios";
-import { IServiceResponse } from "../models/serviceResponse";
+
+import { IServiceResponse } from "@/models";
 import { api } from "./api";
 
 type RequestParams = {

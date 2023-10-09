@@ -1,8 +1,8 @@
 import { IonContent, IonHeader, IonIcon, IonLoading, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 import { addCircleOutline } from "ionicons/icons";
 
-import { ITeacher } from "@/models";
 import { useTeachers } from "@/hooks";
+import { ITeacher } from "@/models";
 import { InfoCard } from "@/components";
 
 import "./index.css";
@@ -39,14 +39,10 @@ const Teachers: React.FC = () => {
                 </IonHeader>
 
                 <div className="container">
-                    {/* <IonButton expand="block" color="primary">
-                Test primary
-            </IonButton> */}
-
                     {isLoading && <IonLoading isOpen={isLoading} message="Loading" />}
                     {!isLoading && (
                         <>
-                            <IonIcon icon={addCircleOutline} className="icon" onClick={handleAdd} />
+                            <IonIcon icon={addCircleOutline} className="add-icon" onClick={handleAdd} />
                             {!!data?.result &&
                                 data.result.length > 0 &&
                                 data.result.map((teacher: ITeacher) => (

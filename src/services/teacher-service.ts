@@ -1,5 +1,4 @@
-import { IServiceResponse } from "../models/serviceResponse";
-import { ITeacher } from "../models/teacher";
+import { IServiceResponse, ITeacher } from "@/models";
 import { Create, Delete, Get, Update } from "./base";
 
 export async function CreateTeacher(teacher: ITeacher): Promise<IServiceResponse<string>> {
@@ -131,7 +130,7 @@ export async function GetAllTeachers(): Promise<IServiceResponse<ITeacher[]>> {
         },
         {
             id: 11,
-            name: "John Doe",
+            name: "Jane Doe",
             cpf: "111.222.333-43",
             expertiseAreas: "Spanish",
             subjects: [

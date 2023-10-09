@@ -1,9 +1,7 @@
 import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
-import { IStudent, IStudents } from "../models/student";
-import { CreateStudent, UpdateStudent, DeleteStudent, GetAllStudents } from "../services/studentService";
-import { queryClient } from "../services/queryClient";
-import { QueryKeys } from "../models/queryKeys";
-import { IServiceResponse } from "../models/serviceResponse";
+
+import { IServiceResponse, IStudent, IStudents, QueryKeys } from "@/models";
+import { CreateStudent, DeleteStudent, GetAllStudents, UpdateStudent, queryClient } from "@/services";
 
 export function useCreateStudent() {
     const mutation = useMutation({

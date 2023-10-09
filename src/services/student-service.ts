@@ -1,5 +1,4 @@
-import { IServiceResponse } from "../models/serviceResponse";
-import { IStudent, IStudents } from "../models/student";
+import { IServiceResponse, IStudent, IStudents } from "@/models";
 import { Create, Delete, Get, Update } from "./base";
 
 export async function CreateStudent(student: IStudent): Promise<IServiceResponse<string>> {

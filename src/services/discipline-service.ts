@@ -1,5 +1,4 @@
-import { IServiceResponse } from "../models/serviceResponse";
-import { ISubject } from "../models/subject";
+import { IServiceResponse, ISubject } from "@/models";
 import { Create, Delete, Get, Update } from "./base";
 
 export async function CreateSubject(subject: ISubject): Promise<IServiceResponse<string>> {
