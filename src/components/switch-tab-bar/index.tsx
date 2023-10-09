@@ -75,6 +75,8 @@ export function SwitchTabBar() {
         },
     ];
 
+    const remainingRoutes = Object.values(PATHS).filter((path) => !tabs.some((tab) => tab.url === path.route));
+
     const revealAnimation = {
         property: "transform",
         fromValue: "translateX(-30px)",
@@ -109,16 +111,22 @@ export function SwitchTabBar() {
         <IonReactRouter>
             <IonTabs>
                 <IonRouterOutlet>
-                    {tabs.map((tab, index) => {
+                    {tabs.map((tab) => {
                         return (
-                            <Route key={index} exact path={tab.url}>
+                            <Route key={tab.url} exact path={tab.url}>
                                 <tab.component />
                             </Route>
                         );
                     })}
 
+                    {remainingRoutes.map((item) => {
+                        const isExact = !item.route.includes(":");
+                        return <Route key={item.route} path={item.route} component={item.component} exact={isExact} />;
+                    })}
+
                     <Route exact path="/">
-                        <Redirect to="/home" />
+                        {/* TODO: Change this as soon as we have a home page */}
+                        <Redirect to={PATHS.teachers.route} />
                     </Route>
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom" onIonTabsDidChange={(e) => setActiveTab(e.detail.tab)}>

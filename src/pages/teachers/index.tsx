@@ -1,22 +1,26 @@
+import { ITeacher } from "@/models";
 import { useTeachers } from "@/hooks";
-import { ItemsListPage } from "@/components";
+import { ItemsList, PageTemplate } from "@/components";
+import { PATHS } from "@/routes";
+import { useIonRouter } from "@ionic/react";
 
 const Teachers: React.FC = () => {
+    const router = useIonRouter();
     const { data } = useTeachers();
     const isLoading = false;
 
-    // TODO: Implement functionality
-    const handleClick = (id: number) => {
-        console.log("Clicked: ", id);
+    const handleSelectItem = (item: ITeacher) => {
+        router.push(PATHS.viewTeacher.route.replace(":id", item.id.toString()));
     };
 
-    // TODO: Implement functionality
     const handleAdd = () => {
-        console.log("Add new teacher");
+        router.push(PATHS.addTeacher.route);
     };
 
     return (
-        <ItemsListPage title="Professores" data={data} isLoading={isLoading} onClick={handleClick} onAdd={handleAdd} />
+        <PageTemplate title="Professores">
+            <ItemsList data={data} isLoading={isLoading} onAdd={handleAdd} onClick={handleSelectItem} />
+        </PageTemplate>
     );
 };
 

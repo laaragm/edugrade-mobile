@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 
 import { ItemsList } from "@/components";
 import { IServiceResponse } from "@/models";
@@ -9,25 +9,32 @@ interface ItemsListPageProps<T> {
     title: string;
     data: IServiceResponse<T[]> | undefined;
     isLoading: boolean;
-    onClick: (id: number) => void;
+    showGoBackButton?: boolean;
+    children?: React.ReactNode;
+    onClick: (item: T) => void;
     onAdd: () => void;
+    onGoBack?: () => void;
 }
 
 export function ItemsListPage<T extends { id: number; name: string }>({
     title,
     data,
     isLoading,
+    showGoBackButton = false,
+    children,
     onClick,
     onAdd,
+    onGoBack,
 }: ItemsListPageProps<T>) {
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    {/* TODO: Remove this */}
-                    {/* <IonButtons slot="start">
-                        <IonBackButton defaultHref="/teachers" />
-                    </IonButtons> */}
+                    {showGoBackButton && (
+                        <IonButtons slot="start" onClick={onGoBack}>
+                            <IonBackButton />
+                        </IonButtons>
+                    )}
                     <IonTitle>{title}</IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -37,7 +44,11 @@ export function ItemsListPage<T extends { id: number; name: string }>({
                         <IonTitle size="large">{title}</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <ItemsList data={data} isLoading={isLoading} onAdd={onAdd} onClick={onClick} />
+                {!!children ? (
+                    <>{children}</>
+                ) : (
+                    <ItemsList data={data} isLoading={isLoading} onAdd={onAdd} onClick={onClick} />
+                )}
             </IonContent>
         </IonPage>
     );

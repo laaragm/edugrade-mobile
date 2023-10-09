@@ -1,3 +1,4 @@
+import { ISubject } from "@/models";
 import { useSubjects } from "@/hooks";
 import { ItemsListPage } from "@/components";
 
@@ -6,8 +7,8 @@ const Disciplines: React.FC = () => {
     const isLoading = false;
 
     // TODO: Implement functionality
-    const handleClick = (id: number) => {
-        console.log("Clicked: ", id);
+    const handleClick = (item: ISubject) => {
+        console.log("Clicked: ", item.id);
     };
 
     // TODO: Implement functionality

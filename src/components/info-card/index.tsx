@@ -1,4 +1,4 @@
-import { IonIcon } from "@ionic/react";
+import { IonIcon, useIonRouter } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
 
 import "./index.css";

@@ -2,12 +2,12 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/rea
 
 import "./index.css";
 
-const Users: React.FC = () => {
+const User: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Users</IonTitle>
+                    <IonTitle>User</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -21,4 +21,4 @@ const Users: React.FC = () => {
     );
 };
 
-export default Users;
+export default User;

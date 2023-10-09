@@ -9,7 +9,7 @@ import "./index.css";
 interface ItemsListProps<T> {
     data: IServiceResponse<T[]> | undefined;
     isLoading: boolean;
-    onClick: (id: number) => void;
+    onClick: (item: T) => void;
     onAdd: () => void;
 }
 
@@ -28,7 +28,7 @@ export function ItemsList<T extends { id: number; name: string }>({
                     {!!data?.result &&
                         data.result.length > 0 &&
                         data.result.map((item) => (
-                            <InfoCard key={item.id} title={item.name} onClick={() => onClick(item.id)} />
+                            <InfoCard key={item.id} title={item.name} onClick={() => onClick(item)} />
                         ))}
                 </>
             )}
