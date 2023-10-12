@@ -1,10 +1,12 @@
+import { useIonRouter } from "@ionic/react";
+
 import { ISubject } from "@/models";
 import { useSubjects } from "@/hooks";
-import { ItemsListPage } from "@/components";
+import { ItemsList, PageTemplate } from "@/components";
 
 const Disciplines: React.FC = () => {
-    const { data } = useSubjects();
-    const isLoading = false;
+    const router = useIonRouter();
+    const { data, isLoading } = useSubjects();
 
     // TODO: Implement functionality
     const handleClick = (item: ISubject) => {
@@ -17,13 +19,9 @@ const Disciplines: React.FC = () => {
     };
 
     return (
-        <ItemsListPage
-            title="Disciplinas"
-            data={data?.result?.data}
-            isLoading={isLoading}
-            onClick={handleClick}
-            onAdd={handleAdd}
-        />
+        <PageTemplate title="Disciplinas">
+            <ItemsList data={data?.result?.data} isLoading={isLoading} onAdd={handleAdd} onClick={handleClick} />
+        </PageTemplate>
     );
 };
 

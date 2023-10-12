@@ -8,8 +8,6 @@ const Teachers: React.FC = () => {
     const router = useIonRouter();
     const { data, isLoading } = useTeachers();
 
-    console.log(data);
-
     const handleSelectItem = (item: ITeacher) => {
         router.push(PATHS.viewTeacher.route.replace(":id", item.id.toString()));
     };

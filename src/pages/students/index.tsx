@@ -1,10 +1,12 @@
+import { useIonRouter } from "@ionic/react";
+
 import { IStudent } from "@/models";
 import { useStudents } from "@/hooks";
-import { ItemsListPage } from "@/components";
+import { ItemsList, PageTemplate } from "@/components";
 
 const Students: React.FC = () => {
-    const { data } = useStudents();
-    const isLoading = false;
+    const router = useIonRouter();
+    const { data, isLoading } = useStudents();
 
     // TODO: Implement functionality
     const handleClick = (item: IStudent) => {
@@ -13,17 +15,13 @@ const Students: React.FC = () => {
 
     // TODO: Implement functionality
     const handleAdd = () => {
-        console.log("Add new discipline");
+        console.log("Add new student");
     };
 
     return (
-        <ItemsListPage
-            title="Estudantes"
-            data={data?.result?.data}
-            isLoading={isLoading}
-            onClick={handleClick}
-            onAdd={handleAdd}
-        />
+        <PageTemplate title="Estudantes">
+            <ItemsList data={data?.result?.data} isLoading={isLoading} onAdd={handleAdd} onClick={handleClick} />
+        </PageTemplate>
     );
 };
 

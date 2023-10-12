@@ -38,7 +38,7 @@ export function TeacherForm({ data, mode, isLoading = false, onDelete, onSave }:
     return (
         <div className="wrapper">
             <IonList>
-                {isLoading && <IonLoading isOpen={isLoading} message="Processing data..." />}
+                {isLoading && <IonLoading isOpen={isLoading} message="Processando solicitação..." />}
                 <IonItem>
                     <IonInput label="Nome:" value={data?.name} ref={nameRef} />
                 </IonItem>
