@@ -9,11 +9,11 @@ interface TeacherFormProps {
     data?: ITeacher;
     mode: Mode;
     isLoading?: boolean;
-    onCancel: () => void;
     onSave: (data: ITeacher) => void;
+    onDelete?: (id: number) => void;
 }
 
-export function TeacherForm({ data, isLoading = false, onCancel, onSave }: TeacherFormProps) {
+export function TeacherForm({ data, mode, isLoading = false, onDelete, onSave }: TeacherFormProps) {
     const nameRef = useRef<HTMLIonInputElement>(null);
     const cpfRef = useRef<HTMLIonInputElement>(null);
     const expertiseAreasRef = useRef<HTMLIonInputElement>(null);
@@ -26,14 +26,19 @@ export function TeacherForm({ data, isLoading = false, onCancel, onSave }: Teach
             expertiseAreas: expertiseAreasRef.current?.value?.toString() || "",
             subjects: data?.subjects ?? [],
         };
-        console.log("dataToSave: ", dataToSave);
         onSave(dataToSave);
+    };
+
+    const handleDelete = () => {
+        if (!!data && !!onDelete) {
+            onDelete(data.id);
+        }
     };
 
     return (
         <div className="wrapper">
             <IonList>
-                {isLoading && <IonLoading isOpen={isLoading} message="Saving data..." />}
+                {isLoading && <IonLoading isOpen={isLoading} message="Processing data..." />}
                 <IonItem>
                     <IonInput label="Nome:" value={data?.name} ref={nameRef} />
                 </IonItem>
@@ -45,8 +50,8 @@ export function TeacherForm({ data, isLoading = false, onCancel, onSave }: Teach
                 </IonItem>
             </IonList>
             <div className="control-buttons">
-                <IonButton color="tertiary" onClick={onCancel}>
-                    Cancelar
+                <IonButton color="tertiary" disabled={mode === "create"} onClick={handleDelete}>
+                    Excluir
                 </IonButton>
                 <IonButton color="primary" onClick={handleSave}>
                     Salvar

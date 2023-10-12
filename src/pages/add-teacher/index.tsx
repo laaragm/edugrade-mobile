@@ -11,10 +11,6 @@ const AddTeacher: React.FC = () => {
     const { mutation: create } = useCreateTeacher();
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleCancel = () => {
-        router.push(PATHS.teachers.route);
-    };
-
     const handleSave = async (formData: ITeacher) => {
         setIsLoading(true);
         const response = await create.mutateAsync(formData);
@@ -27,7 +23,7 @@ const AddTeacher: React.FC = () => {
 
     return (
         <PageTemplate title="Professores" goBackRoute={PATHS.teachers.route} showGoBackButton={true}>
-            <TeacherForm mode="create" isLoading={isLoading} onCancel={handleCancel} onSave={handleSave} />
+            <TeacherForm mode="create" isLoading={isLoading} onSave={handleSave} />
         </PageTemplate>
     );
 };
