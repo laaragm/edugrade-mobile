@@ -17,7 +17,13 @@ const Students: React.FC = () => {
     };
 
     return (
-        <ItemsListPage title="Estudantes" data={data} isLoading={isLoading} onClick={handleClick} onAdd={handleAdd} />
+        <ItemsListPage
+            title="Estudantes"
+            data={data?.result?.data}
+            isLoading={isLoading}
+            onClick={handleClick}
+            onAdd={handleAdd}
+        />
     );
 };
 

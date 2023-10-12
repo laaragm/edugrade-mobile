@@ -1,6 +1,6 @@
 import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
 
-import { ITeacher, QueryKeys, IServiceResponse } from "@/models";
+import { ITeacher, QueryKeys, IServiceResponse, ITeachers } from "@/models";
 import { CreateTeacher, UpdateTeacher, DeleteTeacher, GetAllTeachers, queryClient, GetTeacherById } from "@/services";
 
 export function useCreateTeacher() {
@@ -33,7 +33,7 @@ export function useUpdateTeacher() {
 export function useTeachers() {
     const { data, isLoading, isFetching, error } = useQuery([QueryKeys.Teachers], () => GetAllTeachers(), {
         staleTime: 1000 * 60, // 1 minute
-    }) as UseQueryResult<IServiceResponse<ITeacher[]>, unknown>;
+    }) as UseQueryResult<IServiceResponse<ITeachers>, unknown>;
 
     return { data, isLoading, isFetching, error };
 }
@@ -41,7 +41,7 @@ export function useTeachers() {
 export function useTeacher(id: number) {
     const { data, isLoading, isFetching, error } = useQuery([QueryKeys.Teachers, id], () => GetTeacherById(id), {
         staleTime: 1000 * 60, // 1 minute
-    }) as UseQueryResult<IServiceResponse<ITeacher>, unknown>;
+    }) as UseQueryResult<IServiceResponse<{ data: ITeacher }>, unknown>;
 
     return { data, isLoading, isFetching, error };
 }

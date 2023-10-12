@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IonButton, IonInput, IonItem, IonList } from "@ionic/react";
+import { IonButton, IonInput, IonItem, IonList, IonLoading } from "@ionic/react";
 
 import { ITeacher } from "@/models";
 
@@ -7,11 +7,12 @@ import "./index.css";
 
 interface TeacherFormProps {
     data?: ITeacher;
+    isLoading?: boolean;
     onCancel: () => void;
     onSave: (data: ITeacher) => void;
 }
 
-export function TeacherForm({ data, onCancel, onSave }: TeacherFormProps) {
+export function TeacherForm({ data, isLoading = false, onCancel, onSave }: TeacherFormProps) {
     const [name, setName] = useState(!!data ? data.name : "");
     const [cpf, setCpf] = useState(!!data ? data.cpf : "");
     const [expertiseAreas, setExpertiseAreas] = useState(!!data ? data.expertiseAreas : "");
@@ -24,12 +25,14 @@ export function TeacherForm({ data, onCancel, onSave }: TeacherFormProps) {
             expertiseAreas,
             subjects: data?.subjects ?? [],
         };
+        console.log("dataToSave: ", dataToSave);
         onSave(dataToSave);
     };
 
     return (
         <div className="wrapper">
             <IonList>
+                {isLoading && <IonLoading isOpen={isLoading} message="Saving data..." />}
                 <IonItem>
                     <IonInput value={name} onIonChange={(e) => setName(e.detail.value!)} label="Nome:" />
                 </IonItem>

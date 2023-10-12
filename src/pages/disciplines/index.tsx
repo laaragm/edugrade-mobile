@@ -17,7 +17,13 @@ const Disciplines: React.FC = () => {
     };
 
     return (
-        <ItemsListPage title="Disciplinas" data={data} isLoading={isLoading} onClick={handleClick} onAdd={handleAdd} />
+        <ItemsListPage
+            title="Disciplinas"
+            data={data?.result?.data}
+            isLoading={isLoading}
+            onClick={handleClick}
+            onAdd={handleAdd}
+        />
     );
 };
 

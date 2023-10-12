@@ -6,8 +6,10 @@ import { useIonRouter } from "@ionic/react";
 
 const Teachers: React.FC = () => {
     const router = useIonRouter();
-    const { data } = useTeachers();
-    const isLoading = false;
+    const { data, isLoading } = useTeachers();
+    // const isLoading = false;
+
+    console.log(data);
 
     const handleSelectItem = (item: ITeacher) => {
         router.push(PATHS.viewTeacher.route.replace(":id", item.id.toString()));
@@ -19,7 +21,7 @@ const Teachers: React.FC = () => {
 
     return (
         <PageTemplate title="Professores">
-            <ItemsList data={data} isLoading={isLoading} onAdd={handleAdd} onClick={handleSelectItem} />
+            <ItemsList data={data?.result?.data} isLoading={isLoading} onAdd={handleAdd} onClick={handleSelectItem} />
         </PageTemplate>
     );
 };

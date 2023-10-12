@@ -33,7 +33,7 @@ export function useUpdateSubject() {
 export function useSubjects() {
     const { data, isLoading, isFetching, error } = useQuery([QueryKeys.Subjects], () => GetAllSubjects(), {
         staleTime: 1000 * 60, // 1 minute
-    }) as UseQueryResult<IServiceResponse<ISubject[]>, unknown>;
+    }) as UseQueryResult<IServiceResponse<ISubjects>, unknown>;
 
     return { data, isLoading, isFetching, error };
 }

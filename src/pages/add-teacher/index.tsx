@@ -9,7 +9,6 @@ import { PageTemplate, TeacherForm } from "@/components";
 const AddTeacher: React.FC = () => {
     const router = useIonRouter();
     const { mutation: create } = useCreateTeacher();
-    const pathname = router.routeInfo.pathname;
     const [isLoading, setIsLoading] = useState(false);
 
     const handleCancel = () => {
@@ -22,6 +21,9 @@ const AddTeacher: React.FC = () => {
         const response = await create.mutateAsync(formData);
         console.log(response);
         setIsLoading(false);
+        if (!response.error) {
+            router.push(PATHS.teachers.route);
+        }
         // handleResponse(response);
     };
 

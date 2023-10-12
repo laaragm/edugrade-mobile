@@ -24,12 +24,15 @@ const ViewTeacher: React.FC = () => {
         const response = await update.mutateAsync(formData);
         console.log(response);
         setIsLoading(false);
+        if (!response.error) {
+            router.push(PATHS.teachers.route);
+        }
         // handleResponse(response);
     };
 
     return (
         <PageTemplate title="Professores" goBackRoute={PATHS.teachers.route} showGoBackButton={true}>
-            {data?.result && <TeacherForm data={data?.result} onCancel={handleCancel} onSave={handleUpdate} />}
+            {data?.result && <TeacherForm data={data?.result.data} onCancel={handleCancel} onSave={handleUpdate} />}
         </PageTemplate>
     );
 };

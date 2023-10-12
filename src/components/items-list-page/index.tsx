@@ -1,13 +1,12 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 
 import { ItemsList } from "@/components";
-import { IServiceResponse } from "@/models";
 
 import "./index.css";
 
 interface ItemsListPageProps<T> {
     title: string;
-    data: IServiceResponse<T[]> | undefined;
+    data: T[] | undefined;
     isLoading: boolean;
     showGoBackButton?: boolean;
     children?: React.ReactNode;
