@@ -16,10 +16,8 @@ const AddTeacher: React.FC = () => {
     };
 
     const handleSave = async (formData: ITeacher) => {
-        console.log("handleSave", formData);
         setIsLoading(true);
         const response = await create.mutateAsync(formData);
-        console.log(response);
         setIsLoading(false);
         if (!response.error) {
             router.push(PATHS.teachers.route);
@@ -29,7 +27,7 @@ const AddTeacher: React.FC = () => {
 
     return (
         <PageTemplate title="Professores" goBackRoute={PATHS.teachers.route} showGoBackButton={true}>
-            <TeacherForm onCancel={handleCancel} onSave={handleSave} />
+            <TeacherForm mode="create" isLoading={isLoading} onCancel={handleCancel} onSave={handleSave} />
         </PageTemplate>
     );
 };

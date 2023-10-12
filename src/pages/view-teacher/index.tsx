@@ -19,7 +19,6 @@ const ViewTeacher: React.FC = () => {
     };
 
     const handleUpdate = async (formData: ITeacher) => {
-        console.log("handleUpdate", formData);
         setIsLoading(true);
         const response = await update.mutateAsync(formData);
         console.log(response);
@@ -32,7 +31,15 @@ const ViewTeacher: React.FC = () => {
 
     return (
         <PageTemplate title="Professores" goBackRoute={PATHS.teachers.route} showGoBackButton={true}>
-            {data?.result && <TeacherForm data={data?.result.data} onCancel={handleCancel} onSave={handleUpdate} />}
+            {data?.result && (
+                <TeacherForm
+                    data={data?.result.data}
+                    mode="update"
+                    isLoading={isLoading}
+                    onCancel={handleCancel}
+                    onSave={handleUpdate}
+                />
+            )}
         </PageTemplate>
     );
 };

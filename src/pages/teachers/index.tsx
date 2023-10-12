@@ -7,7 +7,6 @@ import { useIonRouter } from "@ionic/react";
 const Teachers: React.FC = () => {
     const router = useIonRouter();
     const { data, isLoading } = useTeachers();
-    // const isLoading = false;
 
     console.log(data);
 

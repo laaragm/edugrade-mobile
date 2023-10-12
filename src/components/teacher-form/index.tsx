@@ -1,28 +1,29 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { IonButton, IonInput, IonItem, IonList, IonLoading } from "@ionic/react";
 
-import { ITeacher } from "@/models";
+import { ITeacher, Mode } from "@/models";
 
 import "./index.css";
 
 interface TeacherFormProps {
     data?: ITeacher;
+    mode: Mode;
     isLoading?: boolean;
     onCancel: () => void;
     onSave: (data: ITeacher) => void;
 }
 
 export function TeacherForm({ data, isLoading = false, onCancel, onSave }: TeacherFormProps) {
-    const [name, setName] = useState(!!data ? data.name : "");
-    const [cpf, setCpf] = useState(!!data ? data.cpf : "");
-    const [expertiseAreas, setExpertiseAreas] = useState(!!data ? data.expertiseAreas : "");
+    const nameRef = useRef<HTMLIonInputElement>(null);
+    const cpfRef = useRef<HTMLIonInputElement>(null);
+    const expertiseAreasRef = useRef<HTMLIonInputElement>(null);
 
-    const handleSaveClick = () => {
+    const handleSave = () => {
         const dataToSave: ITeacher = {
             id: data?.id ?? 0,
-            name,
-            cpf,
-            expertiseAreas,
+            name: nameRef.current?.value?.toString() || "",
+            cpf: cpfRef.current?.value?.toString() || "",
+            expertiseAreas: expertiseAreasRef.current?.value?.toString() || "",
             subjects: data?.subjects ?? [],
         };
         console.log("dataToSave: ", dataToSave);
@@ -34,24 +35,20 @@ export function TeacherForm({ data, isLoading = false, onCancel, onSave }: Teach
             <IonList>
                 {isLoading && <IonLoading isOpen={isLoading} message="Saving data..." />}
                 <IonItem>
-                    <IonInput value={name} onIonChange={(e) => setName(e.detail.value!)} label="Nome:" />
+                    <IonInput label="Nome:" value={data?.name} ref={nameRef} />
                 </IonItem>
                 <IonItem>
-                    <IonInput value={cpf} onIonChange={(e) => setCpf(e.detail.value!)} label="CPF:" />
+                    <IonInput label="CPF:" value={data?.cpf} ref={cpfRef} />
                 </IonItem>
                 <IonItem>
-                    <IonInput
-                        value={expertiseAreas}
-                        onIonChange={(e) => setExpertiseAreas(e.detail.value!)}
-                        label="Áreas:"
-                    />
+                    <IonInput label="Áreas:" value={data?.expertiseAreas} ref={expertiseAreasRef} />
                 </IonItem>
             </IonList>
             <div className="control-buttons">
                 <IonButton color="tertiary" onClick={onCancel}>
                     Cancelar
                 </IonButton>
-                <IonButton color="primary" onClick={handleSaveClick}>
+                <IonButton color="primary" onClick={handleSave}>
                     Salvar
                 </IonButton>
             </div>
